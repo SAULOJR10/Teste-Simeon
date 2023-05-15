@@ -32,7 +32,6 @@ if (isset($_POST['login']) && isset($_POST['senha'])) {
 
 <body>
     <?php require_once "assets/comuns/navbar.php" ?>
-    <?php require_once "assets/comuns/menu.php" ?>
 
     <div class="conteudo-login">
         <div class="login">

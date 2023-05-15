@@ -19,7 +19,6 @@ if (isset($_SESSION['idUsuario'])) {
 
 <body>
     <?php include_once "assets/comuns/navbar.php" ?>
-    <?php include_once "assets/comuns/menu.php" ?>
     <div class="conteudo">
         <div class="row postagem">
             <h2 class="center">Nosso Blog.</h2>
