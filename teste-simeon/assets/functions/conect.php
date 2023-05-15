@@ -1,6 +1,6 @@
 <?php
 
-class ConexaoCard {
+class Conexao {
 
     private $con;
 

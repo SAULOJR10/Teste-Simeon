@@ -6,24 +6,26 @@
 <div class="l-navbar" id="nav-bar">
     <nav class="nav">
         <div>
-            <a href="#" class="nav_logo"><i class='bx bx-layer nav_logo-icon'></i>
+            <a href="controle_postagens.php" class="nav_logo">
                 <span class="nav_logo-name">
                     <img class="logo" src="assets/img/logo_footer.svg" style="width: 40px;" alt="">
                 </span>
             </a>
             <div class="nav_list">
-                <a href="#" class="nav_link active">
+                <a href="controle_postagens.php" class="nav_link active">
                     <span class="nav_name"> <img src="assets/img/icon-post.svg" alt=""> Postagens</span>
                 </a>
-                <a href="#" class="nav_link">
+                <?php if($_SESSION['tipo_usuario'] == 'adm'){ ?>
+                <a href="controle_usuarios.php" class="nav_link">
                     <span class="nav_name"> <img src="assets/img/icon-user.svg" alt=""> Usuários</span>
                 </a>
-                <a href="#" class="nav_link">
+                <a href="controle_comentarios.php" class="nav_link">
                     <span class="nav_name"> <img src="assets/img/icon-coment.svg" alt=""> Comentários</span>
                 </a>
+                <?php } ?>
             </div>
         </div>
-        <a href="#" class="nav_link">
+        <a href="logout.php" class="nav_link">
             <span class="nav_name"> <img src="assets/img/icon-logout.svg" alt=""> Logout</span>
         </a>
     </nav>
