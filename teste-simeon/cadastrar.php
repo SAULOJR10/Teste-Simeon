@@ -1,0 +1,54 @@
+<?php
+include_once "assets/functions/conexao.php";
+
+session_start();
+
+if (isset($_POST['login']) && isset($_POST['senha'])) {
+    $usr = $_POST['login'];
+    $psw = $_POST['senha'];
+    $sql1 = "select * from login where usuario = '$usr' and senha = '$psw'";
+    $q1 =  mysqli_query($con, $sql1);
+    $res = mysqli_fetch_assoc($q1);
+    if ($psw == $res['senha']) {
+        $num = rand(100000, 900000);
+        $_SESSION['numLogin'] = $num;
+        if ($res['status'] == true) {
+            $_SESSION['idUsuario'] = $res['id'];
+            $_SESSION['usuario'] = explode(' ', $res['usuario']);
+            $_SESSION['arquivo'] = $res['imagem'];
+            $_SESSION['tipo_usuario'] = $res['tipo_usuario'];
+            if ($res['tipo_usuario'] == 'adm') {
+                header("Location:controle.php?num1=$num");
+            } else {
+                header("Location:index.php?num1=$num");
+            }
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php require_once "assets/comuns/head.php" ?>
+
+<body>
+    <?php require_once "assets/comuns/navbar.php" ?>
+    <?php require_once "assets/comuns/menu.php" ?>
+
+    <div class="conteudo-login">
+        <div class="login">
+            <h2>Faça seu login ou cadastre-se</h2>
+            <form action="">
+                <label for="nome">Nome<input type="text" name="nome" id="nome" placeholder="Digite seu usuário"></label>
+                <label for="e_mail">E-mail<input type="password" name="e_mail" id="e_mail" placeholder="Digite sua e-mail"></label>
+                <label for="senha">Senha<input type="password" name="senha" id="senha" placeholder="Digite sua senha"></label>
+                <label for="confirm-senha">Confirmar Senha<input type="password" name="confirm-senha" id="confirm-senha" placeholder="Digite sua senha novamente."></label>
+                <input class="btn-login" type="submit" value="Cadastra-se">
+            </form>
+            <button class="btn-cadastro" onclick="window.location.href= 'login.php'">Já tenho login.</button>
+        </div>
+    </div>
+
+    <?php require_once "assets/comuns/footer.php" ?>
+</body>
+
+</html>
