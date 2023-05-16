@@ -31,7 +31,6 @@ if (!isset($_SESSION['idUsuario'])) {
                 <td>Post</td>
                 <td>Comentário</td>
                 <td>Data Inclusão</td>
-                <td>Add Comentário</td>
                 <td>Usuário</td>
             </tr>
             <tbody id="comentarios">

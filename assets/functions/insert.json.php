@@ -13,6 +13,10 @@ if (isset($_POST['acao'])) {
             $select = new Insert();
             $select->cad_postagens();
             break;
+        case "cad_comentarios":
+            $select = new Insert();
+            $select->cad_comentarios();
+            break;
     }
 }
 
@@ -65,13 +69,9 @@ class Insert
         $id_user = $_SESSION['idUsuario'];
         $data = date("Y/m/d");
         $sql = "INSERT INTO `comentarios`(`comentario`, `data_inclusao`, `id_usuario`, `id_post`) VALUES ('$descricao','$data','$id_user','$select_posts')";
-        if ($conect->execQuerry($sql)) {
-            $conect->fecharConexao();
-            echo json_encode("Comentário cadastrada com sucesso!");
-            return true;
-        } else {
-            echo json_encode("Erro ao cadastrar a o comentario, recarregue a página e tente novamente!");
-            return false;
-        }
+        $conect->execQuerry($sql);
+        $conect->fecharConexao();
+        echo json_encode("Comentário cadastrada com sucesso!");
+        return true;
     }
 }

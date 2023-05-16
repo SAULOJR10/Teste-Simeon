@@ -137,8 +137,8 @@ class Select
                     <td>$num</td>
                     <td>$titulo</td>
                     <td>$comentario</td>
-                    <td>$usuario</td>
                     <td>$data</td>
+                    <td>$usuario</td>
                 </tr>";
                 $num++;
             }
